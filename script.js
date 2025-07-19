@@ -26,3 +26,35 @@ menuIcon.onclick = () => {
   navbar.classList.toggle("active");
 };
 
+
+
+
+// Create binary code animation
+const homeImg = document.querySelector('.home-img');
+if (homeImg) {
+  const binaryContainer = document.createElement('div');
+  binaryContainer.className = 'binary-code';
+  homeImg.appendChild(binaryContainer);
+  
+  // Create 50 binary digits
+  for (let i = 0; i < 50; i++) {
+    const digit = document.createElement('span');
+    digit.className = 'binary-digit';
+    digit.textContent = Math.random() > 0.5 ? '1' : '0';
+    
+    // Random properties
+    const left = Math.random() * 100;
+    const delay = Math.random() * 15;
+    const duration = 10 + Math.random() * 20;
+    const size = 8 + Math.random() * 8;
+    const blur = Math.random() * 3;
+    
+    digit.style.left = `${left}%`;
+    digit.style.animationDelay = `${delay}s`;
+    digit.style.animationDuration = `${duration}s`;
+    digit.style.fontSize = `${size}px`;
+    digit.style.filter = `blur(${blur}px)`;
+    
+    binaryContainer.appendChild(digit);
+  }
+}

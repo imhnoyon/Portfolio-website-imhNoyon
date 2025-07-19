@@ -11,10 +11,11 @@
 }
 
 :root {
-  --bg-color: #080808;
-  --second-bg-color: #131313;
-  --text-color: white;
-  --main-color: #00ffee;
+  --bg-color: #081b29;
+  --second-bg-color: #112e42;
+  --text-color: #ededed;
+  --main-color: #00abf0;
+  --accent-color: #ff6b6b;
 }
 
 html {
@@ -138,7 +139,7 @@ span {
   border-radius: 50%;
 }
 
-.home-img img {
+ /* .home-img img {
   position: relative;
   top: 3rem;
   width: 32vw;
@@ -147,12 +148,193 @@ span {
   cursor: pointer;
   transition: 0.4s ease-in-out;
   background: #07f9e527;
-}
+} 
 
 .home-img img:hover {
   box-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color),
     0 0 100px var(--main-color);
+} */
+
+/* existing code  */
+.home-img {
+  margin-top: 30px;
+  position: relative;
+  --neon-glow: 0 0 10px #00f7ff, 
+               0 0 20px #00abf0, 
+               0 0 30px #0062ff;
+  --neon-glow-hover: 0 0 15px #00f7ff, 
+                     0 0 30px #00abf0, 
+                     0 0 45px #0062ff;
+  filter: drop-shadow(0 0 5px rgba(0, 171, 240, 0.5));
 }
+
+.home-img img {
+  margin-top: 30px;
+  position: relative;
+  width: 32vw;
+  min-width: 280px;
+  max-width: 380px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  background: 
+    linear-gradient(145deg, #081b29 30%, #112e42 70%) padding-box,
+    linear-gradient(135deg, #00f7ff, #0062ff, #00abf0) border-box;
+  box-shadow: var(--neon-glow);
+  animation: 
+    float 5s ease-in-out infinite,
+    border-pulse 3s ease infinite alternate;
+  z-index: 10;
+  clip-path: polygon(
+    50% 0%,
+    90% 20%,
+    100% 60%,
+    75% 100%,
+    25% 100%,
+    0% 60%,
+    10% 20%
+  );
+  transform-style: preserve-3d;
+}
+
+/* Hover Effects */
+.home-img img:hover {
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: var(--neon-glow-hover);
+  filter: 
+    brightness(1.1) 
+    drop-shadow(0 0 10px rgba(0, 171, 240, 0.7));
+  animation: 
+    float 3s ease-in-out infinite,
+    border-pulse-fast 1.5s ease infinite alternate;
+}
+
+/* Hexagonal Float Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+/* Border Pulse Animation */
+@keyframes border-pulse {
+  from {
+    border-width: 3px;
+    opacity: 0.8;
+  }
+  to {
+    border-width: 6px;
+    opacity: 1;
+  }
+}
+
+@keyframes border-pulse-fast {
+  from {
+    border-width: 3px;
+    opacity: 0.8;
+  }
+  to {
+    border-width: 8px;
+    opacity: 1;
+  }
+}
+
+/* Cyberpunk Grid Overlay */
+.home-img::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: 
+    linear-gradient(90deg, transparent 49%, #00f7ff22 50%, transparent 51%),
+    linear-gradient(transparent 49%, #00f7ff22 50%, transparent 51%);
+  background-size: 20px 20px;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.3;
+  animation: grid-rotate 20s linear infinite;
+}
+
+@keyframes grid-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Digital Particles */
+.home-img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 60%, #00abf015 100%);
+  z-index: -1;
+  animation: digital-fade 4s ease-in-out infinite alternate;
+}
+
+@keyframes digital-fade {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+
+/* Binary Code Animation */
+.home-img .binary-code {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.home-img .binary-digit {
+  position: absolute;
+  color: #00f7ff;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 12px;
+  opacity: 0.6;
+  animation: float-up 15s linear infinite;
+  text-shadow: 0 0 5px #00f7ff;
+}
+
+@keyframes float-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+
+/* existing code end */
 
 .social-icons a {
   display: inline-flex;
